@@ -111,6 +111,14 @@ public class App {
 						sort.setIntResult(sort.bubbleSort(workArray, key));
 						sort.displayResult();
 					}
+					if(subop == 3) {
+						sort.setIntResult(sort.recursiveBubbleSort(workArray, key, workArray.length));
+						sort.displayResult();
+					}
+					if(subop == 4) {
+						sort.setIntResult(sort.insertionSort(workArray, key));
+						sort.displayResult();
+					}
 				}
 			}
 		}

@@ -2,13 +2,13 @@ package com.algorithms.demo;
 
 public class Search extends Algorithm{
 	private int intResult = 0;
-	private String[] algorithmList = {"Linear Search ", "Binary Search "};
+	private String[] algorithmList = {"Linear Search", "Binary Search (Sorted arrays only)"};
 	
 	public Search() {
 		this.setAlgorithms(this.algorithmList);
 	}
 	
-	int linearSearch(int arr[], int key) {
+	int linearSearch(int[] arr, int key) {
 		int arrLength = arr.length;
         for (int i = 0; i < arrLength; i++)
         {

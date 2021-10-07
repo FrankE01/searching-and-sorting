@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class Sort extends Algorithm{
 	private int[] resultArray;
-	private String[] algorithmList = {"Selection Sort ", "Bubble Sort "};
+	private String[] algorithmList = {"Selection Sort", "Bubble Sort", "Recursive Bubble Sort", "Insertion Sort"};
 	
 	public Sort() {
 		this.setAlgorithms(this.algorithmList);
 	}
 
-	int[] selectionSort(int arr[], int key) {
+	int[] selectionSort(int[] arr, int key) {
 		int arrEnd = arr.length - 1;
 		
 		for(int i = 0; i < arrEnd; i++) {
@@ -28,7 +28,7 @@ public class Sort extends Algorithm{
 		return arr;
 	}
 	
-	int[] bubbleSort(int arr[], int key) {
+	int[] bubbleSort(int[] arr, int key) {
 		int arrEnd = arr.length - 1;
 		for(int i = 0; i < arrEnd; i++) {
 			for(int j = 0; j < arrEnd-i; j++) {
@@ -47,20 +47,58 @@ public class Sort extends Algorithm{
 		return arr;
 	}
 	
+	int[] recursiveBubbleSort(int[] arr, int key, int arrLength)  {
+		if(arrLength == 1) return arr;
+		
+		for (int i = 0; i < arrLength - 1; i++) {
+			if ((key == 1) && (arr[i] > arr[i+1])) {
+				int temp = arr[i];
+				arr[i] = arr[i+1];
+				arr[i+1] = temp;
+			}
+			if ((key == 2) && (arr[i] < arr[i+1])) {
+				int temp = arr[i];
+				arr[i] = arr[i+1];
+				arr[i+1] = temp;
+			}
+		}
+		recursiveBubbleSort(arr, key, arrLength-1);
+		return arr;
+	}
+	
+	int[] insertionSort(int[] arr, int key) {
+		for(int i = 1; i < arr.length; ++i) {
+			int currentItem = arr[i];
+			int j = i - 1;
+			if (key == 1) {
+				while(j >= 0 && arr[j] > currentItem) {
+					arr[j + 1] = arr[j];
+					j--;
+				}
+				arr[j + 1] = currentItem;
+			}
+			if (key == 2) {
+				while(j >= 0 && arr[j] < currentItem) {
+					arr[j + 1] = arr[j];
+					j--;
+				}
+				arr[j + 1] = currentItem;
+			}
+		}
+		return arr;
+	}
+	
+	int[] recursiveInsertionSort(int[] arr, int key, int arrLength) {
+		arrLength = arr.length;
+	}
+	
+	
+	
 	void setIntResult(int[] result) {
 		this.resultArray = result;
 	}
 
 	void displayResult() {
-//		System.out.print("Sorted array: [");
-//		for (int i = 0; i < this.resultArray.length; i++) {
-//			if(i == this.resultArray.length-1) {
-//				System.out.print(this.resultArray[i]);
-//			} else {
-//				System.out.print(this.resultArray[i]+", ");
-//			}
-//		}
-//		System.out.println("]");
 		System.out.println("Sorted Array: " + Arrays.toString(resultArray));
 	}
 }
