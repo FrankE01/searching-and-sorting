@@ -1,5 +1,7 @@
 package com.algorithms.demo;
 
+import java.util.Arrays;
+
 public class Sort extends Algorithm{
 	private int[] resultArray;
 	private String[] algorithmList = {"Selection Sort ", "Bubble Sort "};
@@ -49,15 +51,16 @@ public class Sort extends Algorithm{
 		this.resultArray = result;
 	}
 
-	void displayResult(int key) {
-		System.out.print("Sorted array: [");
-		for (int i = 0; i < this.resultArray.length; i++) {
-			if(i == this.resultArray.length-1) {
-				System.out.print(this.resultArray[i]);
-			} else {
-				System.out.print(this.resultArray[i]+", ");
-			}
-		}
-		System.out.println("]");
+	void displayResult() {
+//		System.out.print("Sorted array: [");
+//		for (int i = 0; i < this.resultArray.length; i++) {
+//			if(i == this.resultArray.length-1) {
+//				System.out.print(this.resultArray[i]);
+//			} else {
+//				System.out.print(this.resultArray[i]+", ");
+//			}
+//		}
+//		System.out.println("]");
+		System.out.println("Sorted Array: " + Arrays.toString(resultArray));
 	}
 }

@@ -3,6 +3,8 @@
  */
 package com.algorithms.demo;
 
+import java.util.ArrayList;
+
 /**
  * @author Francis
  *
@@ -12,7 +14,6 @@ public class App {
 		
 		InputScanner scanner = new InputScanner();
 		boolean terminate = false;
-		int arraySize = 0;
 		int subop = 0;
 		int key = 0;
 		
@@ -45,22 +46,20 @@ public class App {
 				} else {
 					subop = scanner.menuSelection;
 					System.out.println("You chose: " + algorithmList[scanner.menuSelection - 1]);
-					System.out.print("Input array size: ");
-					terminate = scanner.verifyInput(scanner.scanner.nextLine());
-					if(terminate) break;
-					arraySize = scanner.menuSelection;
-					int[] workArray = new int[arraySize];
-					System.out.println("Array should have "+arraySize+" elements.\n Input array elements and press return after each input: ");
-					for(int i = 0; i< arraySize; i++) {
+					ArrayList<Integer> workArrayList = new ArrayList<Integer>();
+					System.out.println("Input array elements and press return after each input. Input -1 after last array element to submit array.: ");
+					while(scanner.menuSelection != -1 ) {
 						terminate = scanner.verifyInput(scanner.scanner.nextLine());
 						if(terminate) break;
-						workArray[i] = scanner.menuSelection;
+						if(scanner.menuSelection == -1) break;
+						workArrayList.add(scanner.menuSelection);
 					}
 					if(terminate) break;
 					System.out.println("Enter search key: ");
 					terminate = scanner.verifyInput(scanner.scanner.nextLine());
 					if(terminate) break;
 					key = scanner.menuSelection;
+					int[] workArray = workArrayList.stream().mapToInt(Integer::intValue).toArray();
 					
 					
 					if(subop == 1) {
@@ -68,7 +67,7 @@ public class App {
 						search.displayResult(key);
 					}
 					if(subop == 2) {
-						search.setIntResult(search.binarySearch(workArray, key, 0, arraySize-1));
+						search.setIntResult(search.binarySearch(workArray, key, 0, workArray.length-1));
 						search.displayResult(key);
 					}
 				}
@@ -87,31 +86,30 @@ public class App {
 					System.out.println("Invalid selection");
 				} else {
 					subop = scanner.menuSelection;
+					
 					System.out.println("You chose: " + algorithmList[scanner.menuSelection - 1]);
-					System.out.print("Input array size: ");
-					terminate = scanner.verifyInput(scanner.scanner.nextLine());
-					if(terminate) break;
-					arraySize = scanner.menuSelection;
-					int[] workArray = new int[arraySize];
-					System.out.println("Array should have "+arraySize+" elements.\n Input array elements and press return after each input: ");
-					for(int i = 0; i< arraySize; i++) {
+					ArrayList<Integer> workArrayList = new ArrayList<Integer>();
+					System.out.println("Input array elements and press return after each input. Input -1 after last array element to submit array.: ");
+					while(scanner.menuSelection != -1 ) {
 						terminate = scanner.verifyInput(scanner.scanner.nextLine());
 						if(terminate) break;
-						workArray[i] = scanner.menuSelection;
+						if(scanner.menuSelection == -1) break;
+						workArrayList.add(scanner.menuSelection);
 					}
 					if(terminate) break;
 					System.out.println("Enter sort key: \n1. Ascending\n2. Descending");
 					terminate = scanner.verifyInput(scanner.scanner.nextLine());
 					if(terminate) break;
 					key = scanner.menuSelection;
+					int[] workArray = workArrayList.stream().mapToInt(Integer::intValue).toArray();
 					
 					if(subop == 1) {
 						sort.setIntResult(sort.selectionSort(workArray, key));
-						sort.displayResult(key);
+						sort.displayResult();
 					}
 					if(subop == 2) {
 						sort.setIntResult(sort.bubbleSort(workArray, key));
-						sort.displayResult(key);
+						sort.displayResult();
 					}
 				}
 			}
