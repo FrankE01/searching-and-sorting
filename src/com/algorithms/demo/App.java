@@ -119,6 +119,10 @@ public class App {
 						sort.setIntResult(sort.insertionSort(workArray, key));
 						sort.displayResult();
 					}
+					if(subop == 5) {
+						sort.setIntResult(sort.mergeSort(workArray, key, 0, workArray.length-1));
+						sort.displayResult();
+					}
 				}
 			}
 		}
