@@ -3,7 +3,7 @@ package com.algorithms.demo;
 //A class for the search algorithms
 public class Search{
 	private int intResult = 0;
-	private String[] algorithmList = {"Linear Search", "Binary Search (Sorted arrays only)", "Fibonacci Search (Sorted arrays only)"};
+	private String[] algorithmList = {"Linear Search", "Binary Search (Sorted arrays only)", "Exponential Search (Sorted arrays only)", "Fibonacci Search (Sorted arrays only)"};
 	
 	//a method to return the list of all implemented search algorithms
 	String[] getAlgorithms(){
@@ -32,6 +32,19 @@ public class Search{
 		if(arr[arrayMid] > key) return binarySearch(arr, key, arrayBegin, arrayMid-1);
 		if(arr[arrayMid] == key) return arrayMid;
 		return -1;
+	}
+	
+	
+	//a method that implements the exponential search algorithm
+	int exponentialSearch(int[] arr, int key, Search search) {
+		if(arr[0] == key) return 0;
+		
+		int i = 1;
+		while((i < arr.length) && (arr[i] <= key)) {
+			i = i*2;	
+		}
+		
+		return search.binarySearch(arr, key, i/2, Math.min(i, arr.length-1));
 	}
 	
 	
@@ -72,8 +85,6 @@ public class Search{
 		return -1;
 	}
 	
-	
-	//a method that implements the exponential search algorithm
 	
 	
 	//a method that displays the list of algorithms

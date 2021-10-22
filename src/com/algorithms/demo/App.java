@@ -61,6 +61,9 @@ public class App {
 						search.setIntResult(search.binarySearch(workArray, key, 0, workArray.length-1));
 					}
 					if(suboperation == 3) {
+						search.setIntResult(search.exponentialSearch(workArray, key, search));
+					}
+					if(suboperation == 4) {
 						search.setIntResult(search.fibonacciSearch(workArray, key));
 					}
 					search.displayResult(key);
@@ -94,20 +97,29 @@ public class App {
 					//going through switch cases for each search algorithm according to the sub-operation specified by user.
 					if(suboperation == 1) {
 						sort.setIntResult(sort.selectionSort(workArray, key));
-						sort.displayResult();
 					}
 					if(suboperation == 2) {
 						sort.setIntResult(sort.bubbleSort(workArray, key));
-						sort.displayResult();
 					}
 					if(suboperation == 3) {
 						sort.setIntResult(sort.recursiveBubbleSort(workArray, key, workArray.length));
-						sort.displayResult();
 					}
 					if(suboperation == 4) {
 						sort.setIntResult(sort.insertionSort(workArray, key));
-						sort.displayResult();
 					}
+					if(suboperation == 5) {
+						sort.setIntResult(sort.mergeSort(workArray, workArray.length ,sort, key));
+					}
+					if(suboperation == 6) {
+						sort.setIntResult(sort.quickSort(workArray, 0, workArray.length - 1 ,sort, key));
+					}
+					if(suboperation == 7) {
+						sort.setIntResult(sort.shellSort(workArray, key));
+					}
+					if(suboperation == 8) {
+						sort.setIntResult(sort.radixsort(workArray, workArray.length, sort, key));
+					}
+					sort.displayResult();
 				}
 			}
 		}
