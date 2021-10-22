@@ -3,7 +3,12 @@ package com.algorithms.demo;
 //A class for the search algorithms
 public class Search{
 	private int intResult = 0;
-	private String[] algorithmList = {"Linear Search", "Binary Search (Sorted arrays only)", "Exponential Search (Sorted arrays only)", "Fibonacci Search (Sorted arrays only)"};
+	private String[] algorithmList = {
+			"Linear Search", 
+			"Binary Search (Sorted arrays only)", 
+			"Exponential Search (Sorted arrays only)", 
+			"Fibonacci Search (Sorted arrays only)"
+			};
 	
 	//a method to return the list of all implemented search algorithms
 	String[] getAlgorithms(){
