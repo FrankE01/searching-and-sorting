@@ -2,14 +2,18 @@ package com.algorithms.demo;
 
 import java.util.Arrays;
 
-public class Sort extends Algorithm{
+//A class for the sort algorithms
+public class Sort{
 	private int[] resultArray;
-	private String[] algorithmList = {"Selection Sort", "Bubble Sort", "Recursive Bubble Sort", "Insertion Sort", "Merge Sort"};
+	private String[] algorithmList = {"Selection Sort", "Bubble Sort", "Recursive Bubble Sort", "Insertion Sort"};
 	
-	public Sort() {
-		this.setAlgorithms(this.algorithmList);
+	//a method to return the list of all implemented search algorithms
+	String[] getAlgorithms(){
+		return this.algorithmList;
 	}
 
+	
+	//a method that implements the selection sort algorithm
 	int[] selectionSort(int[] arr, int key) {
 		int arrEnd = arr.length - 1;
 		
@@ -28,6 +32,8 @@ public class Sort extends Algorithm{
 		return arr;
 	}
 	
+	
+	//a method that implements the bubble sort algorithm
 	int[] bubbleSort(int[] arr, int key) {
 		int arrEnd = arr.length - 1;
 		for(int i = 0; i < arrEnd; i++) {
@@ -47,6 +53,8 @@ public class Sort extends Algorithm{
 		return arr;
 	}
 	
+	
+	//a method that implements the recursive bubble sort algorithm
 	int[] recursiveBubbleSort(int[] arr, int key, int arrLength)  {
 		if(arrLength == 1) return arr;
 		
@@ -66,6 +74,8 @@ public class Sort extends Algorithm{
 		return arr;
 	}
 	
+	
+	//a method that implements the insertion sort algorithm
 	int[] insertionSort(int[] arr, int key) {
 		for(int i = 1; i < arr.length; ++i) {
 			int currentItem = arr[i];
@@ -88,59 +98,21 @@ public class Sort extends Algorithm{
 		return arr;
 	}
 	
-	int[] mergeSort(int[] arr, int key, int left, int right) {
-		
-		if(left < right) {
-			int middle = left + (right - 1)/2;
-			
-			mergeSort(arr, key, left, middle);
-			mergeSort(arr, key, middle+1, right);
-			
-			int n1 = middle - left + 1;
-			int n2 = right - middle;
-			
-			int[] L = new int[n1];
-			int[] R = new int[n2];
-			
-			for (int i = 0; i < n1; ++i) L[i] = arr[left + i];
-			for (int j = 0; j < n2; ++j) R[j] = arr[middle + 1 + j];
-			
-			int i = 0, j = 0;
-			
-			int k = left;
-			while (i < n1 && j < n2) {
-				if(L[i] <= R[j]) {
-					arr[k] = L[i];
-					i++;
-				}
-				else {
-					arr[k] = R[j];
-					j++;
-				}
-				k++;
-			}
-			
-			while (i < n1) {
-				arr[k] = L[i];
-				i++;
-				k++;
-			}
-			
-			while (j < n2) {
-				arr[k] = R[j];
-				j++; 
-				k++;
-			}
-			
+	
+	//a method that displays the list of algorithms
+	void displayList(String[] algorithmList) {
+		for(int i = 0; i < algorithmList.length; i++) {
+			System.out.println((i + 1)+". "+ algorithmList[i]);
 		}
-		return arr;
+		System.out.print(">: ");
 	}
 	
-	
+	//a method that sets the result of algorithm operations to the resultArray field in the sort class.
 	void setIntResult(int[] result) {
 		this.resultArray = result;
 	}
 
+	//a method to display the result
 	void displayResult() {
 		System.out.println("Sorted Array: " + Arrays.toString(resultArray));
 	}
